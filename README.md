@@ -1,6 +1,6 @@
 
 
-# Mongoose Flights Lab (test)22
+# Mongoose Flights Lab (test)
 
 
 ## Intro
