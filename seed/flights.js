@@ -1,35 +1,39 @@
-//oh my god I got stuck seeding this because flights vs Flights. the lowercase f uppercase FUCKED me
 const db = require('../db')
 const Chance = require('chance')
 const { Airport, Flight } = require('../models')
-//may have to edit if there's errors about duplicate varaibles even though theyre on different files
-const chance = Chance()
-//sidenote, chance has a section on dice which will be useful for games
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+const chance = new Chance()
+const airportIDs = [
+    "6477cdd8f37e54cf841534bf",
+    "6477cdd8f37e54cf841534c0",
+    "6477cdd8f37e54cf841534c1",
+    "6477cdd8f37e54cf841534c2",
+    "6477cdd8f37e54cf841534c3",
+    "6477cdd8f37e54cf841534c4"
+]
 
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const createFlights = async() => {
     const flights = Array.from({length:15}, async () => {
+        const randomDepart = chance.pickone(airportIDs)
+        const randomArrive = chance.pickone(airportIDs)
         return new Flight({
             airline: chance.sentence({words: 2}),
             flight_number: chance.integer({min:111, max:999}),
-            //hmm I wonder if 0 are placeholders? if min was 000 would flight number be '000' or '0'
-            price: chance.floating({min: 75, max:5000}),
-            //can math functions be used to round to a dollar-looking int
+            price: chance.integer({min: 75, max:5000}),
             numberOfSeats: chance.integer({min:80, max:250}),
             departure: chance.date(),
-            departingAirport: Airport._id,
-            arrivingAirport: Airport._id
+            // I found out that my successfully seeded airports cannot be accessed directly through mongoose, so I ran them through an array in MongoDB that would find just the IDs. 
+            departingAirport: randomDepart,
+            arrivingAirport: randomArrive
         })
     })
     await Flight.insertMany(flights)
-    console.log('flights createed')
-    return airports
-    //let airports = await Airport.find({})
+    console.log('flights created')
 }
 
 const run = async () => {
-    const flights = await createFlights
+    const flights = await createFlights()
     await createFlights(flights)
     db.close()
 }
