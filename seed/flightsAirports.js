@@ -1,3 +1,8 @@
+/*
+*****************
+I really wanted this to work.  It doesnt. 
+*****************
+
 const db = require('../db')
 const Chance = require('chance')
 const { Airport, Flight } = require ('../models')
@@ -64,3 +69,5 @@ const run = async () =>
 }
 
 run()
+
+*/
