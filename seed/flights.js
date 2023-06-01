@@ -96,12 +96,8 @@ const flights = [
         arrivalAirport:flyingMachines[0]._id,
         departure:2023-11-12
     }
-      
-
 ]
-
-
-
+await Flight.insertMany(flights)
 }
 
 const run = async () => 
