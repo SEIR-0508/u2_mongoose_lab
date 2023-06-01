@@ -29,10 +29,12 @@ let flight = await Flight.create({
 console.log(flight)
 }
 
-const updateBook = async () => { const updated = await Flight.updateOne( { title: '' }, { published_date: '1880-08-02' } ) console.log(updated) }
+const updateFlight = async () => { const updated = await Flight.updateOne( { flight_number: '' }, {} )console.log(updateFlight) }
 
-// const deleteBook = async () => { let deleted = await Book.deleteOne({ title: 'Brothers Karamazov' }) console.log(deleted) }
+const deleteFlight = async () => { let deleted = await Flight.deleteOne({ flight_number: '' 'Brothers Karamazov' }) console.log(deleted) }
 
-async function main() { try { await findInfo() await findObject() await createFlights()}
+const deleteAirport = async () => { let deleted = await Airport.deleteOne({ name: '' }) console.log(deleted) }
+
+async function main() { try { await findInfo() await findObject() await createFlights() updateFlight() deleteFlight() deleteAirport()}
 
 main()
