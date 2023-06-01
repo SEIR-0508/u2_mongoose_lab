@@ -3,12 +3,12 @@ const { Airport, Flight } = require('./models')
 
 const findAllAirports = async () => {
     const airports = await Airport.find()
-    console.log(airports)
+    console.log('airports', airports)
 }
 
 const findAllFlights = async () => {
     const flights = await Flight.find()
-    console.log(flights)
+    console.log('flights', flights)
 }
 
 const run = async () => {
@@ -29,7 +29,6 @@ run()
 // USER STORIES:
 
 // As A User (AAU), I want to view a list of all flights and airports (index functionality) that displays each flight's airline, airport, flight no., and departure date/time (consider formatting the departs property).
-
 
 
 

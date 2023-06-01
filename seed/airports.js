@@ -28,6 +28,7 @@ const main = async () => {
     ]
     await Airport.insertMany(airports)
     console.log('created airports')
+    return airports
 }
 
 const run = async () => {
