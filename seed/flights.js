@@ -7,12 +7,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 const main = async () => {
     const flyingMachines = await Airport.find({name: "Flying Machines R Us"})
     const flySafe = await Airport.find({name: 'Fly Safe'})
-    const notFalling = await airport.find({name:' Definitely Not Falling '})
-    const flyAway = await airport.find({name:' Fly Away '})
-    const ANU = await airport.find({name:' Airport Numba One '})
-    const weFlyinBoys = await airport.find({name:' We Flyin Boys '})
-    const pFly = await airport.find({name:' Potato Flight '})
-    const noSplice  = await airport.find({name:' Splice Bad Idea '})
+    const notFalling = await Airport.find({name:'Definitely Not Falling'})
+    const flyAway = await Airport.find({name:'Fly Away'})
+    const ANU = await Airport.find({name:'Airport Numba One'})
+    const weFlyinBoys = await Airport.find({name:'We Flyin Boys'})
+    const pFly = await Airport.find({name:'Potato Flight'})
+    const noSplice  = await Airport.find({name:'Splice Bad Idea'})
 
 const flights = [
     {
@@ -57,7 +57,7 @@ const flights = [
         price:7.60,
         numberOfSeats:75,
         departingAirport:flyAway[0]._id,
-        arrivalAirport:NotFalling[0]._id,
+        arrivalAirport:notFalling[0]._id,
         departure:2023-11-12
     },
     {
@@ -103,3 +103,12 @@ const flights = [
 
 
 }
+
+const run = async () => 
+{
+    await main()
+    db.close()
+}
+
+
+run()
