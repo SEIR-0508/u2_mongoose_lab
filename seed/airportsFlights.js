@@ -17,7 +17,7 @@ const createAirports = async () => {
     new Airport({
         name: 'John F. Kennedy International Airport',
         location: 'New York City, New York',
-        code: 'DCA'
+        code: 'JFK'
     }),
     new Airport({
         name: 'Los Angeles International Airport',
@@ -38,31 +38,29 @@ const createAirports = async () => {
 //creating child data attached 
 
 const createFlights = async (airports) => {
-    console.table(airports)
+    // console.table(airports)
     let lenOfFlights = 12;
-    let depFlight;
-    let ariFlight;
     // creating all 12 possible flights
     let flights = [...Array(lenOfFlights)]
     let flightIndex = 0;
-    
     for (i=0; i<4; i++) {
         for (j=0;j<4; j++) {
             if (i !== j) {
-                depFlight = airports[i];
-                ariFlight = airports[j];
+                let depFlight = airports[i];
+                let ariFlight = airports[j];
                 flights[flightIndex] = new Flight({
                     
                     airline: "United",
-                    flight_number: 100,
+                    flight_number: 100+flightIndex,
                     price: 300,
                     numberOfSeats: 64,
                     departingAirport: depFlight._id,
                     arrivalAirport: ariFlight._id,
-        //             //https://www.mongodb.com/docs/manual/reference/method/Date/ --- will use this to figure out how to set the correct date
+                    //https://www.mongodb.com/docs/manual/reference/method/Date/ --- will use this to figure out how to set the correct date
                     departure_dateTime: new Date(),
                 })
                 flightIndex++;
+                console.log(flightIndex);
             }
         }
     }
