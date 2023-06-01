@@ -2,12 +2,12 @@ const db = require('./db')
 const { Airport, Flight } = require('./models')
 
 const findAllAirports = async () => {
-    const airports = await Airport.find()
+    const airports = await Airport.findOne()
     console.log('airports', airports)
 }
 
 const findAllFlights = async () => {
-    const flights = await Flight.find()
+    const flights = await Flight.findOne()
     console.log('flights', flights)
 }
 
