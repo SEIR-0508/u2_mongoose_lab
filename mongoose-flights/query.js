@@ -38,8 +38,9 @@ const readFlights = async() => {
 
 //USER STORY 3
 
-const createFlight = async(airlineName,airlineNumber,airlinePrice,airlineSeats,airlineDeparture) => {
-    const airport = await Airport.findOne({name: airlineName})
+const createFlight = async(airlineName,airlineNumber,airlinePrice,airlineSeats, departingAirport, arrivalAirport, airlineDeparture) => {
+    const airport = await Airport.findOne({name: departingAirport})
+    const airport2 = await Airport.findOne({name: arrivalAirport})
     const flight = await Flight.create(
         {
             airline: airlineName,
@@ -47,7 +48,7 @@ const createFlight = async(airlineName,airlineNumber,airlinePrice,airlineSeats,a
             price: airlinePrice,
             numberOfSeats: airlineSeats,
             departingAirport: airport._id,
-            arrivalAirport: airport._id,
+            arrivalAirport: airport2._id,
             departureDateTime: airlineDeparture
         }
     )
@@ -64,10 +65,14 @@ const updateFlightDetails = async(targetFlightNumber, newAirline, newPrice, newD
 
 //USER STORY 5
 
-const deleteFlightAndAirport = async(flightNum, airport) => {
+const deleteFlight = async(flightNum) => { 
     const deletedFlight = await Flight.deleteOne({flightNumber: flightNum})
+    console.log('Deleted Flight: ' + deletedFlight)
+}
+
+const deleteAirport = async(airport) => {
     const deletedAirport = await Airport.deleteOne({name: airport})
-    console.log('Deleted Flight ' + deletedFlight + '. Deleted Airport ' + deletedAirport)
+    console.log('Deleted Airport: ' + deletedAirport)
 }
 
 async function main () {
@@ -76,7 +81,8 @@ async function main () {
         //await readFlights()
         //await createFlight()
         //await updateFlightDetails()
-        await deleteFlightAndAirport()
+        await deleteFlight()
+        await deleteAirport()
         //insert custom arguments for createFlight and below
     } catch(error){
         console.log(error)
