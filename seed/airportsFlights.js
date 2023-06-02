@@ -40,8 +40,8 @@ const air = async () => {
             airline: "United Airlines",
             flight_number: 00010,
             price: 350.00,
-            number_of_seats: 2,
-            departing_airport: ORD[0],
+            number_of_seats: 2, 
+            departing_airport: ORD[0]._id,
             arrival_airport: YYZ[0]._id,
             departure_date_time: "5/31/2023 - 07:30"
 
@@ -123,6 +123,7 @@ const air = async () => {
     }
     
     const run = async () => {
+        await air()
         await flight()
         db.close()
     }
