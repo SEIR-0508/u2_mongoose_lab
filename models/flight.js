@@ -1,4 +1,4 @@
-const { Schema, Airport } = require('mongoose')
+const { Schema } = require('mongoose')
 
 const Flight = new Schema(
   {
@@ -6,9 +6,9 @@ const Flight = new Schema(
     flightNumber: { type: Number, required: true },
     price: {type: Number, required: true},
     numberOfSeats: { type: Number, required: true },
-    departingAirport:{ type: String, required: true },
-    arrivalAirport: { type: String, required: true},
-    departureDateTime: { type: Date, required: true },
+    departingAirport:{ type: Schema.Types.ObjectId, ref: "airport_id", required: true },
+    arrivalAirport: { type: Schema.Types.ObjectId, ref: "airport_id", required: true},
+    departureDateTime: { type: String, required: true },
   },
   { timestamps: true }
 )
