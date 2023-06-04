@@ -7,13 +7,13 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 
 const main = async () => {
-    const airports = await Airport.find({}).populate('departingAirport').populate('arrivalAirport') /* <-- original attempt */
-    // const kennedy = await Airport.findOne({ code:'JFK' })
-    // const newark = await Airport.findOne({ code:'EWR' })
-    // const laguardia = await Airport.findOne({ code:'LGA' })
-    // const westchester = await Airport.findOne({ code:'HPN' })
+    const airports = await Airport.find({}) /* <-- original attempt */
+    // const JFK = await Airport.findOne({ code:'JFK' }).populate('name')
+    // const EWR = await Airport.findOne({ code:'EWR' }).populate('name')
+    // const LGA = await Airport.findOne({ code:'LGA' }).populate('name')
+    // const HPN = await Airport.findOne({ code:'HPN' }).populate('name')
 
-    const flights = [
+    let flights = [
         {
             airline: 'Delta',
             flight_number: 'D1409',
@@ -76,7 +76,7 @@ const main = async () => {
             departingAirport: airports[0]._id,
             arrivalAirport: airports[3]._id,
             departure_date_time: '10/31/2023 23:59'
-        },
+        }
     ]
     await Flight.deleteMany()
     await Flight.insertMany(flights)
