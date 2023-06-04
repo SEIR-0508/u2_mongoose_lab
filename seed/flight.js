@@ -75,6 +75,7 @@ const main = async () => {
             departure_dateAndTime: '10:00 PM. Wed, May 31',
         }
     ]
+    await Flight.deleteMany()
     await Flight.insertMany(flights)
     console.log('Created flights with Airports!')
 }

@@ -33,6 +33,7 @@ const main = async () => {
     ]
 
     //Mongoose allows us to run Mongo Data through JS
+    await Airport.deleteMany()
     await Airport.insertMany(airports)
     console.log('created airports!')
 }
