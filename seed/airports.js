@@ -26,6 +26,7 @@ const main = async () => {
             code: 'HPN'
         }
     ]
+    await Airport.deleteMany() /* <-- erases the whole table, i.e. the previous/old values */
     await Airport.insertMany(airports)
     console.log('created airports')
     return airports
