@@ -26,13 +26,17 @@ const findFlightsById = async () => {
 // AAU, I want to create flights by entering the information for Airports and Flights using a Query.js file that you will create
 
 
+const MIA = Airport.find({ name: 'Miami International Airport'})
+const JFK = Airport.find({ name: 'John F. Kennedy International Airport'})
+
+
 const JetBlueFlight = {
     airline: 'JetBlue',
     flight_number: 393,
     price: '$802',
     numberOfSeats: 220,
-    departingAirport: JFK[0]._id,
-    arrivalAirport: MIA[0]._id,
+    departingAirport: JFK,
+    arrivalAirport: MIA,
     departure_dateAndTime: '10:29 PM.  Wed, May 31'
 }
 
@@ -58,7 +62,11 @@ const updateFlight = async () => {
 // AAU, I want to be able to delete any Flight and Airport
 
 const deleteFlight = async () => {
+  try {
   const deletedFlight = Flight.deleteOne()
+  }catch (error) {
+    console.log(error)
+  }
 }
 
 
@@ -69,10 +77,10 @@ const run = async () => {
   try {
     await findAllAirports()
     await findAllFlights()
-    await findFlightsById()
-    await createFlight(JetBlueFlight)
-    await updateFlight()
-    await deleteFlight()
+    // await findFlightsById()
+    // await createFlight(JetBlueFlight)
+    // await updateFlight()
+    // await deleteFlight()
   } catch (error) {
     console.log(error)
   } finally {
