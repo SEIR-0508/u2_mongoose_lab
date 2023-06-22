@@ -1,0 +1,18 @@
+{
+  "name": "u2_mongoose_lab",
+  "version": "1.0.0",
+  "description": "For this lab, lets create a database of Flights and use a model of Flights and Airports.",
+  "main": "query.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^7.2.3",
+    "nodemon": "^2.0.22"
+  }
+}
