@@ -1,4 +1,4 @@
-
+### SEIR 0911EC
 
 # Mongoose Flights Lab
 
@@ -16,7 +16,7 @@ What folders and files we will we need to create as well?
 
 ## Exercises
 
-1) Populate your **db/index.js** file that connects to a database.
+1) Populate your **db/index.js** file that connects to a database, we can call it "flightsDatabase".
 
 
 2) Create a Model of Airport with the following properties:
@@ -30,6 +30,7 @@ What folders and files we will we need to create as well?
 
 
 3) Create a `Flight` Model with the following properties, making sure its linked to the respective airports they'll be flying in and out of:
+   - If you are feeling comfortable so far, use both Departing and Arriving Airports in your model. If you are still wrapping your head around Relations, feel free to just use one!
 
 	| Property | Type |
 	|---|---|
